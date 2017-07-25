@@ -3,7 +3,7 @@ class LanguageLoader{
         this.languages = []
     }
 
-    load(languages){
+    load({languages}){
         this.languages = languages
     }
     getLanguage(languageCode){

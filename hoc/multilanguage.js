@@ -7,25 +7,15 @@ import languageLoader from '../languageLoader.js'
  */
 export default function multilanguage(key){
     return (WrappedComponent) => {
-        class MultipleLanguage extends React.Component{
-            constructor(props){
-                super(props)
-
-                if (props.strings){
-                    console.error('[multilanguage] Please do NOT pass "string" as props to multilanguage component.')
-                }
-            }
-            render(){
-                const {currentLanguageCode} = this.props
-                const language = languageLoader.getLanguage(currentLanguageCode) || {}
-                var strings = language[key] || {}
-                return <WrappedComponent {...this.props} strings={strings} />;
-            }
-        } 
+        const MultipleLanguage = (props) => <WrappedComponent {...props} />
 
         return connect(state => {
+            const currentLanguageCode = state.multilanguage.currentLanguageCode
+            const language = languageLoader.getLanguage(currentLanguageCode) || {}
+            var strings = language[key] || {}
             return {
-                currentLanguageCode: state.multilanguage.currentLanguageCode
+                currentLanguageCode,
+                strings
             }
         })(MultipleLanguage)  
     }

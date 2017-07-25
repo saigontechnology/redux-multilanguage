@@ -1,6 +1,6 @@
 import multilanguage from './hoc/multilanguage.js'
 import {changeLanguage} from './actions'
-import multilanguageReducer from './reducers/multilanguage.js'
+import multilanguageReducer, {createMultilanguageReducer} from './reducers/multilanguage.js'
 import languageLoader from './languageLoader.js'
 
 export {
@@ -11,6 +11,7 @@ export {
      *      --> will pass a strings array into WrappedComponent via this.props.strings which has translations texts.
      */
     multilanguage,
+    createMultilanguageReducer,
     changeLanguage,
     multilanguageReducer,
     languageLoader
