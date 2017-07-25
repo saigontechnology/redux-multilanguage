@@ -1,6 +1,7 @@
 import multilanguage from './hoc/multilanguage.js'
 import {changeLanguage} from './actions'
 import multilanguageReducer from './reducers/multilanguage.js'
+import languageLoader from './languageLoader.js'
 
 export {
     /**
@@ -11,5 +12,6 @@ export {
      */
     multilanguage,
     changeLanguage,
-    multilanguageReducer
+    multilanguageReducer,
+    languageLoader
 }

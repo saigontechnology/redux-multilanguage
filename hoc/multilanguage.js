@@ -1,18 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import languageLoader from '../languageLoader.js'
 
-//TODO - dynamic load languages file if languages are heavy
-import en from '../languages/en.json'
-import vi from '../languages/vi.json'
-const languages = {en, vi}
-function getLanguage(languageCode){
-    if (languages.hasOwnProperty(languageCode)){
-        return languages[languageCode]
-    }else{
-        console.error(`${languageCode} is not an available language code.`)
-        return languages['en']
-    }
-}
 /**
  *  A higer-order component for multilanguage. See usage instruction in ../index.js
  */
@@ -27,7 +16,9 @@ export default function multilanguage(key){
                 }
             }
             render(){
-                var strings = getLanguage(this.props.currentLanguageCode)[key];
+                const {currentLanguageCode} = this.props
+                const language = languageLoader.getLanguage(currentLanguageCode) || {}
+                var strings = language[key] || {}
                 return <WrappedComponent {...this.props} strings={strings} />;
             }
         } 

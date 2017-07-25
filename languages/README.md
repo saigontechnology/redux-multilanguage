@@ -1,1 +1,0 @@
-File names in this folder must be consist with column 639-1 in here: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes

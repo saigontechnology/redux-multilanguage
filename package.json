@@ -2,8 +2,9 @@
   "name": "redux-multilanguage",
   "version": "0.0.1",
   "description": "A higher-order component use with Redux to support multilanguage",
-  "main": "index.js",
+  "main": "lib/bundle.js",
   "scripts": {
+    "webpack": "webpack",
     "test": "npm t"
   },
   "repository": {
@@ -13,10 +14,21 @@
   "keywords": [
     "redux"
   ],
+  "peerDependencies": {
+    "react": "*",
+    "react-redux": "*"
+  },
   "author": "rudyhuynh",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/stssoftware/redux-multilanguage/issues"
   },
-  "homepage": "https://github.com/stssoftware/redux-multilanguage#readme"
+  "homepage": "https://github.com/stssoftware/redux-multilanguage#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.3.0"
+  }
 }
