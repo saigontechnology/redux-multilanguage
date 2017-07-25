@@ -1,0 +1,22 @@
+{
+  "name": "redux-multilanguage",
+  "version": "0.0.1",
+  "description": "A higher-order component use with Redux to support multilanguage",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stssoftware/redux-multilanguage.git"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "author": "rudyhuynh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stssoftware/redux-multilanguage/issues"
+  },
+  "homepage": "https://github.com/stssoftware/redux-multilanguage#readme"
+}

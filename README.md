@@ -1,0 +1,1 @@
+Future note: This module can be likely changed into 'locale' instead of 'multilanguage'
