@@ -46,12 +46,12 @@ import {combineReducers} from 'redux'
 import {createMultilanguageReducer} from 'redux-multilanguage'
 
 export default combineReducers({
-  //other reducers
-  multilanguage: createMultilanguageReducer({currentLanguageCode: 'vi'}) // this is your default language
+  multilanguage: createMultilanguageReducer({currentLanguageCode: 'vi'}), // this is your default language
+  //other reducers...
 })
 ```
 
-* If you want to change language, use `changeLanguage` action create from `redux-multilanguage`
+* If you want to change language, use `changeLanguage` action creator from `redux-multilanguage`
 
 ## LICENSE
 MIT
