@@ -52,6 +52,3 @@ export default combineReducers({
 ```
 
 * If you want to change language, use `changeLanguage` action creator from `redux-multilanguage`
-
-## LICENSE
-MIT
