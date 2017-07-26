@@ -5,7 +5,7 @@ A higher-order component used with Redux to support multilangauge.
 
 ## Installation
 ```
-npm install --save stssoftware/redux-multilanguage.git#0.0.3
+npm install --save redux-multilanguage@next
 ```
 
 ## Usage sample
