@@ -52,3 +52,11 @@ export default combineReducers({
 ```
 
 * If you want to change language, use `changeLanguage` action creator from `redux-multilanguage`
+
+## APIs
+Below are what exported by `redux-multilanguage`
+* `multilanguage(groupName)(WrappedComponent)`: Use this to wrap your component, wrapped component will have `strings` object that has translation texts.
+* `languageLoader.load(config)`: Load languages, this must be called when app start.
+  * `config.languages`: A languages list to be loaded.
+* `createMultilanguageReducer(initState)`: return a reducer for multilanguage in redux store
+* `changeLanguage(languageCode)`: an action creator to change language. Example usage: `store.dispatch(changeLanguage('en'))` 
