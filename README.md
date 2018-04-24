@@ -34,7 +34,7 @@ const languages = {vi, en}
 
 class App extends React.Component{
   componentDidMount(){
-    languageLoader.load({language})
+    languageLoader.load({languages})
   }
   render(){
     return <MyComponent/>
