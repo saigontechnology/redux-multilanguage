@@ -1,6 +1,5 @@
 # Redux Multilanguage
-A higher-order component used with Redux to support multilangauge.
-
+A higher-order component used with Redux to support multilanguage
 ## Installation
 ```
 npm install --save redux-multilanguage
