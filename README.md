@@ -1,62 +1,88 @@
 # Redux Multilanguage
-
-## What is this
 A higher-order component used with Redux to support multilangauge.
 
 ## Installation
 ```
-npm install --save redux-multilanguage@next
+npm install --save redux-multilanguage
 ```
 
 ## Usage sample
 ```jsx
 //vi.json
 {
-  "MyComponent": {title: 'Tieu de'}
+  "title": "Tieu de"
 }
 
 //en.json
 {
-  "MyComponent": {title: 'Title'}
+  "title": "Title"
 }
-
-//MyComponent.js
-import {multilanguage} from 'redux-multilanguage'
-const MyComponent = ({strings}) => <div>{strings.title}</div>
-export default multilanguage('MyComponent')(MyComponent)
 
 // App.js
-import {MyComponent} from './MyComponent'
-import {languageLoader} from 'redux-multilanguage'
-import vi from './vi.json'
-import en from './en.json'
-const languages = {vi, en}
+import {languageLoader, multilanguage, changeLanguage, loadLanguages} from 'redux-multilanguage'
+import {connect} from 'react-redux'
 
 class App extends React.Component{
+  state = {language: 'en'}
   componentDidMount(){
-    languageLoader.load({languages})
+    this.loadLanguages()
+  }
+  loadLanguages(){
+    // You can lazily load the languages on demand or just import them directly
+    this.props.dispatch(loadLanguages({
+      languages: {
+        vi: require('./vi.json'),
+        en: require('./en.json')
+      }
+    }))
+  }
+  changeLanguage = (e) => {
+    const languageCode = e.target.value
+    this.props.dispatch(changeLanguage(languageCode))
   }
   render(){
-    return <MyComponent/>
+    const {
+      strings,
+      currentLanguageCode
+    } = this.props
+    return <div>
+      {strings["title"]}
+
+      Change language: <select value={currentLanguageCode} onChange={this.changeLanguage}>
+        <option value="en">en</option>
+        <option value="vi">vi</option>
+      </select>
+    </div>
   }
 }
+export default connect()(multilanguage(App))
 
 // reducers.js
 import {combineReducers} from 'redux'
 import {createMultilanguageReducer} from 'redux-multilanguage'
 
 export default combineReducers({
-  multilanguage: createMultilanguageReducer({currentLanguageCode: 'vi'}), // this is your default language
-  //other reducers...
+  multilanguage: createMultilanguageReducer({currentLanguageCode: 'en'}),
+  //...
 })
 ```
 
-* If you want to change language, use `changeLanguage` action creator from `redux-multilanguage`
-
 ## APIs
 Below are what exported by `redux-multilanguage`
-* `multilanguage(groupName)(WrappedComponent)`: Use this to wrap your component, wrapped component will have `strings` object that has translation texts.
-* `languageLoader.load(config)`: Load languages, this must be called when app start.
-  * `config.languages`: A languages list to be loaded.
-* `createMultilanguageReducer(initState)`: return a reducer for multilanguage in redux store
-* `changeLanguage(languageCode)`: an action creator to change language. Example usage: `store.dispatch(changeLanguage('en'))` 
+* [HOC] `multilanguage(WrappedComponent)`: Use this to wrap your component, wrapped component will have `strings` object that has translation texts.
+* [action creator] `loadLanguages(config)`: Load languages, this action should be dispatched when app start or dispatched mutiple times when ever demand to lazy-load languages.
+  * `config.languages`: An object, keys are language codes, equivalent values are json of code-string values. Example:
+
+    ```
+    dispatch(loadLanguages({
+      languages: {
+        vi: {title: 'Tieu de', name: 'Tên'},
+        en: {title: 'Title', name: 'Name'}
+      }
+    }))
+    ```
+
+* [action creator] `changeLanguage(languageCode)`: an action creator to change language. 
+Example usage: `dispatch(changeLanguage('en'))` 
+* `createMultilanguageReducer(initState)`: returns a reducer for multilanguage in redux store
+  * `initState.currentLanguageCode`: language code to be loaded by default
