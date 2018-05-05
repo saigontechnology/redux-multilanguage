@@ -1,6 +1,6 @@
 {
   "name": "redux-multilanguage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A higher-order component use with Redux to support multilanguage",
   "main": "lib/bundle.js",
   "scripts": {
