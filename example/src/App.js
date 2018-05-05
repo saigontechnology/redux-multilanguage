@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  languageLoader,
   multilanguage,
   changeLanguage,
   loadLanguages
@@ -8,12 +7,10 @@ import {
 import { connect } from "react-redux";
 
 class App extends React.Component {
-  state = { language: "en" };
   componentDidMount() {
     this.loadLanguages();
   }
   loadLanguages() {
-    // You can lazily load the languages on demand or just import them directly
     this.props.dispatch(
       loadLanguages({
         languages: {

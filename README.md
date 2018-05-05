@@ -58,7 +58,6 @@ import {
 import {connect} from 'react-redux'
 
 class App extends React.Component{
-  state = {language: 'en'}
   componentDidMount(){
     this.loadLanguages()
   }

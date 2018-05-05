@@ -9,5 +9,9 @@ export default function multilanguage(WrappedComponent) {
       currentLanguageCode,
       strings
     };
-  })(WrappedComponent);
+  })(
+    /*WrappedComponent*/ function XYZ() {
+      return <div>abc</div>;
+    }
+  );
 }

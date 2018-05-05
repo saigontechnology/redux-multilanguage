@@ -1,21 +1,14 @@
-import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import reducers from './reducers'
+import { createStore } from "redux";
 
-/**
- *  Redux Store configuration
- */
-
-const middlewares = [
-    thunk
-]
+import reducers from "./reducers";
 
 //create store
-let store = createStore(reducers, {}, 
-	compose(
-		applyMiddleware(...middlewares),
-		process.env.NODE_ENV === "development" && window.devToolsExtension ? window.devToolsExtension() : f => f
-	)
-)
+let store = createStore(
+  reducers,
+  {},
+  process.env.NODE_ENV === "development" && window.devToolsExtension
+    ? window.devToolsExtension()
+    : f => f
+);
 
 export default store;
